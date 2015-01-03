@@ -1,4 +1,4 @@
-/* 
+/*! 
     Created on : Dec 8, 2014, 10:19:11 PM
     Author     : Ferdinand Bergado
 */
@@ -17,8 +17,7 @@
 
 .plate-number 
 {
-    background: url(../img/plate.jpg) center no-repeat;
-    background-size: contain; 
+    background: url(../img/plate.jpg) center no-repeat; 
     font-size: xx-large;
     text-align: center;    
     color: black;
@@ -28,4 +27,11 @@
     margin: 0 auto;    
 }
 
+.version 
+{
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-size: small;
+}
 

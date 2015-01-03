@@ -1,5 +1,4 @@
-/* 
- /* 
+/*! 
  Created on : Dec 22, 2014, 10:19:11 PM
  Author     : Ferdinand Bergado
  */
@@ -9,8 +8,7 @@ function initDB() {
     if (!sqlitePlugin.openDatabase)  // Check browser is supported SQLite or not.
 
     {
-
-        alert('Databases are not supported.');
+        alert('Databases are not supported by your device. \nThe app won\'t be able to generate driver names.');
     }
 
 }
@@ -30,6 +28,7 @@ function generateNames() {
     var dataset;
 
     var db = sqlitePlugin.openDatabase({name: "names.db"});
+    // var db = window.openDatabase("names.db","3.0","names database", 10000);
 
     db.transaction(function (tx) {
 
@@ -68,10 +67,10 @@ function generateNames() {
     }, function (e) {
         alert("ERROR: " + e.textContent);
     });
-    
+
     var pn = generatePlates();
-    
-    $("#plate-number").prop("innerHTML", "<h1>" + pn + "</h1>");    
+
+    $("#plate-number").prop("innerHTML", "<h1>" + pn + "</h1>");
 
 }
 
@@ -82,7 +81,7 @@ function generatePlates() {
     var platedigits = (getRandomInt(100, 999)).toString();
     var f2 = getRandomInt(10, 99);
     var ld = parseInt(platedigits.substr(platedigits.length - 1));
-    var platenumber = '';   
+    var platenumber = '';
     var d3 = 0;
 
     switch ($("#select-area").val()) {
@@ -126,7 +125,7 @@ function generatePlates() {
     }
 
     switch ($("#select-day").val()) {
-        
+
         case "mon":
             d3 = getDigit(ld, 1, 2);
             break;
@@ -147,7 +146,7 @@ function generatePlates() {
         case "fri":
             d3 = getDigit(ld, 9, 0);
             break;
-            
+
     }
 
     if ($("#select-day").val() != "wknd") {
@@ -155,9 +154,9 @@ function generatePlates() {
     }
 
     plateletters = fl + String.fromCharCode(getRandomInt(65, 90)) + String.fromCharCode(getRandomInt(65, 90));
-    platenumber = plateletters + ' ' + platedigits;    
-    
-    return platenumber;    
+    platenumber = plateletters + ' ' + platedigits;
+
+    return platenumber;
 }
 
 function getRandomInt(mind, maxd) {
@@ -172,4 +171,19 @@ function getDigit(d, x, y) {
         }
     }
     return d;
+}
+
+function showAbout() {
+
+    $("#popupAbout").popup("open");
+
+}
+
+function exitRPNG() {
+
+    var c = confirm("Are you sure you want to exit this app?");
+    if (c == true) {
+        navigator.app.exitApp();
+    }
+
 }

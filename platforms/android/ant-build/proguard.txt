@@ -1,6 +1,9 @@
-# view AndroidManifest.xml #generated:5
--keep class com.fsbergado.randomplate.CordovaApp { <init>(...); }
+# view AndroidManifest.xml #generated:12
+-keep class net.codejava.crypto { <init>(...); }
 
 # view AndroidManifest.xml #generated:11
 -keep class org.pgsqlite.SQLitePlugin { <init>(...); }
+
+# view AndroidManifest.xml #generated:5
+-keep class ph.com.fsbergado.randomplate.CordovaApp { <init>(...); }
 

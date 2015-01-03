@@ -8,10 +8,10 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
-        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "file": "plugins/uk.co.whiteoctober.cordova.appversion/www/AppVersionPlugin.js",
+        "id": "uk.co.whiteoctober.cordova.appversion.AppVersionPlugin",
         "clobbers": [
-            "navigator.splashscreen"
+            "cordova.getAppVersion"
         ]
     }
 ];
@@ -19,7 +19,7 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "com.brodysoft.sqlitePlugin": "1.0.3",
-    "org.apache.cordova.splashscreen": "0.3.6-dev"
+    "uk.co.whiteoctober.cordova.appversion": "0.1.5"
 }
 // BOTTOM OF METADATA
 });

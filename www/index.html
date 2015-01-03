@@ -17,21 +17,26 @@
     specific language governing permissions and limitations
     under the License.
 -->
+<!-- 	Random Plate Number Generator
+        Created by Ferdinand S. Bergado
+        ferdiebergado@yahoo.com
+-->
 <html>
     <head>
+        <meta name="description" content="An application that generates plate numbers and name of drivers.">
+        <meta name="author" content="Ferdinand S. Bergado">	
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
-        
+
         <link rel="stylesheet" type="text/css" href="css/randomplate.css" />         
         <link rel="stylesheet" type="text/css" href="js/libs/jquery-mobile/jquery.mobile.min.css" />
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/libs/jquery/jquery.min.js"></script>                 
-
         <script type="text/javascript">
 
             $(document).bind('mobileinit', function () {
@@ -43,30 +48,14 @@
 
             // Cordova is ready
             function onDeviceReady() {
-
-                navigator.splashscreen.hide();
+                cordova.getAppVersion().then(function (version) {
+                    $("#appVersion").text("Version " + version + " Beta");
+                });
                 initDB();
-                $("#generate").click();
-
-            }
-
-            function showAbout() {
-
-                $("#popupAbout").popup("open");
-
-            }
-
-            function exitRPNG() {
-
-                var c = confirm("Are you sure you want to exit this app?");
-                if (c == true) {
-                    navigator.app.exitApp();
-                }
-
+                $("#generate").click();                
             }
 
         </script>
-
         <script type="text/javascript" src="js/libs/jquery-mobile/jquery.mobile.min.js"></script>
 
         <title>Random Plate Number Generator</title>
@@ -75,6 +64,7 @@
         <script type="text/javascript" src="js/index.js"></script> 
         <div data-role="page" data-transition="pop" data-theme="a">
             <div data-role="header"><center><img src="img/rpng-banner.jpg" width="100%" height="10%" alt="rpng banner"></center></div>
+            <div id="appVersion" class="version">Detecting version...</div>
             <div data-role="content">
                 <label id="label-area" for="select-area">Select an area:</label>
                 <select id="select-area" data-theme="a">
@@ -85,24 +75,24 @@
                     <option value="bag">Baguio</option>
                     <option value="ilo">Iloilo</option>                    
                 </select>                
-                <div id="select-day-container">
-                    <label id="label-day" for="select-day">Select day of week:</label>
-                    <select id="select-day" data-theme="a">
-                        <option value="mon">Monday</option>
-                        <option value="tue">Tuesday</option>
-                        <option value="wed">Wednesday</option>
-                        <option value="thu">Thursday</option>
-                        <option value="fri">Friday</option>
-                        <option value="wknd">Weekend</option>
-                    </select>
-                </div>
+
+                <label id="label-day" for="select-day">Select day of week:</label>
+                <select id="select-day" data-theme="a">
+                    <option value="mon">Monday</option>
+                    <option value="tue">Tuesday</option>
+                    <option value="wed">Wednesday</option>
+                    <option value="thu">Thursday</option>
+                    <option value="fri">Friday</option>
+                    <option value="wknd">Weekend</option>
+                </select>
+
                 <h3>Driver's Name:</h3>
-                <div id="driver-name" class="driver-name" data-theme="a"></div>
+                <div id="driver-name" class="driver-name" data-theme="a">Generating...</div>
                 <div data-role="popup" id="popupAbout" data-overlay-theme="b" data-theme="b" data-corners="false" class="ui-content">
                     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
                     <img class="popupphoto" src="img/about.jpg" style="max-height:512px;" alt="RPNG About Image">
                 </div>
-                <div id="plate-number" class="plate-number" data-theme="a"></div>
+                <div id="plate-number" class="plate-number" data-theme="a" style="background-size:contain"></div>
                 <br>
                 <div class="ui-grid-solo">
                     <div class="ui-block-a"><button id="generate" type="v" data-theme="b" onclick="generateNames()">Generate</button></div>
@@ -117,9 +107,7 @@
                 </div>
             </div>
             <div data-role="footer"><h4>Email: ferdiebergado@yahoo.com</h4></div>
-        </div>              
-        
+        </div>        
         <script type="text/javascript" src="js/randomplate.js"></script>        
-        
     </body>
 </html>

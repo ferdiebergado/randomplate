@@ -2,3 +2,4 @@
 /home/ferdie/Projects/HTML5Application/platforms/android/ant-build/CordovaApp.ap_ \
 /home/ferdie/Projects/HTML5Application/platforms/android/ant-build/classes.dex \
 /home/ferdie/Projects/HTML5Application/platforms/android/CordovaLib/ant-build/classes.jar \
+/home/ferdie/Projects/HTML5Application/platforms/android/libs/android-support-v4.jar \

@@ -24,7 +24,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>",
+                            "xml": "<feature name=\"AppVersion\"><param name=\"android-package\" value=\"uk.co.whiteoctober.cordova.AppVersion\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -36,8 +36,8 @@
         "com.brodysoft.sqlitePlugin": {
             "PACKAGE_NAME": "com.fsbergado.randomplate"
         },
-        "org.apache.cordova.splashscreen": {
-            "PACKAGE_NAME": "com.fsbergado.randomplate"
+        "uk.co.whiteoctober.cordova.appversion": {
+            "PACKAGE_NAME": "ph.com.fsbergado.randomplate"
         }
     },
     "dependent_plugins": {}
