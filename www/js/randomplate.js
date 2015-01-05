@@ -3,6 +3,7 @@
  Author     : Ferdinand Bergado
  */
 
+// Test if sqlite is supported
 function initDB() {
 
     if (!sqlitePlugin.openDatabase)  // Check browser is supported SQLite or not.
@@ -13,12 +14,13 @@ function initDB() {
 
 }
 
+// Generate driver's name
 function generateNames() {
 
     var sql_fname_count = "SELECT * FROM fnames";
-    var sql_lname_count = "SELECT * FROM lnames";
-    var sql_fname = "SELECT fname FROM fnames WHERE fnid = (?)";
-    var sql_lname = "SELECT lname FROM lnames WHERE lnid = (?)";
+    var sql_lname_count = "SELECT * FROM lnames";    
+    var sql_fname = " WHERE fnid = (?)";
+    var sql_lname = " WHERE lnid = (?)";
     var fid = 0;
     var fn = '';
     var lid = 0;
@@ -27,18 +29,19 @@ function generateNames() {
     var lcount = 0;
     var dataset;
 
-    var db = sqlitePlugin.openDatabase({name: "names.db"});
-    // var db = window.openDatabase("names.db","3.0","names database", 10000);
+    var db = sqlitePlugin.openDatabase({name: "names.db"});    
 
     db.transaction(function (tx) {
 
+        // Get the number of records
         tx.executeSql(sql_fname_count, [], function (tx, result) {
 
             dataset = result.rows;
             fcount = dataset.length;
             fid = getRandomInt(1, fcount);
 
-            tx.executeSql(sql_fname, [fid], function (tx, result) {
+            //Retrieve the id of the first name that corresponds to the randomly generated number
+            tx.executeSql(sql_fname_count + sql_fname, [fid], function (tx, result) {
 
                 dataset = result.rows;
                 fn = dataset.item(0).fname;
@@ -55,7 +58,7 @@ function generateNames() {
             lcount = dataset.length;
             lid = getRandomInt(1, lcount);
 
-            tx.executeSql(sql_lname, [lid], function (tx, result) {
+            tx.executeSql(sql_lname_count + sql_lname, [lid], function (tx, result) {
 
                 dataset = result.rows;
                 ln = dataset.item(0).lname;
@@ -74,6 +77,7 @@ function generateNames() {
 
 }
 
+// Generate plate numbers
 function generatePlates() {
 
     var fl = '';
@@ -124,6 +128,7 @@ function generatePlates() {
             break;
     }
 
+    // Get the day of week and assign an appropriate last digit for the plate number
     switch ($("#select-day").val()) {
 
         case "mon":
@@ -149,36 +154,42 @@ function generatePlates() {
 
     }
 
+    // In case of a weekend
     if ($("#select-day").val() != "wknd") {
         platedigits = f2.toString() + d3.toString();
     }
 
+    // Combine the characters and digits for the plate number
     plateletters = fl + String.fromCharCode(getRandomInt(65, 90)) + String.fromCharCode(getRandomInt(65, 90));
     platenumber = plateletters + ' ' + platedigits;
 
     return platenumber;
 }
 
+//Generate a random integer
 function getRandomInt(mind, maxd) {
     return Math.floor(Math.random() * (maxd - mind + 1)) + mind;
 }
 
-function getDigit(d, x, y) {
+//Generate the appropriate last digit
+function getDigit(d, x, y) {        
     while ((d == x) || (d == y)) {
         d = getRandomInt(1, 10);
-        if (d == 10) {
+        if ( d == 10) {
             d = 0;
         }
     }
     return d;
 }
 
+//Show that About Dialog 
 function showAbout() {
 
     $("#popupAbout").popup("open");
 
 }
 
+//Quit the application
 function exitRPNG() {
 
     var c = confirm("Are you sure you want to exit this app?");

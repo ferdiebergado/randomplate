@@ -82,6 +82,7 @@
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/js \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/cordova.js \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/img \
+/home/ferdie/Projects/HTML5Application/platforms/android/assets/www/platenumber.css \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www \

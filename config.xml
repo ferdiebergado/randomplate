@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="ph.com.fsbergado.randomplate" version="2.1.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="ph.com.fsbergado.randomplate" version="2.1.3">
     <name>Random Plate Number Generator</name>
     <description>
         A mobile app for generating random plate numbers
     </description>
-    <icon src="images/logo.png"/>
+    <icon src="logo.png"/>
     <author email="ferdiebergado@yahoo.com" href="http://cordova.io">
         ferdiebergado@yahoo.com
     </author>

@@ -33,18 +33,15 @@
         <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
 
         <link rel="stylesheet" type="text/css" href="css/randomplate.css" />         
+        <link rel="stylesheet" type="text/css" href="platenumber.css" />
         <link rel="stylesheet" type="text/css" href="js/libs/jquery-mobile/jquery.mobile.min.css" />
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/libs/jquery/jquery.min.js"></script>                 
-        <script type="text/javascript">
+        <script type="text/javascript">           
 
             $(document).bind('mobileinit', function () {
                 $.mobile.selectmenu.prototype.options.nativeMenu = false;
-                $.mobile.loading("show", {
-                    text: "Loading",
-                    textVisible: true                 
-                });
             });
 
             // Wait for Cordova to load
@@ -56,7 +53,7 @@
                     $("#appVersion").text("Version " + version + " Beta");
                 });
                 initDB();
-                $("#generate").click();
+                $("#generate").click();                
             }
 
         </script>
@@ -96,7 +93,7 @@
                     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
                     <img class="popupphoto" src="img/about.jpg" style="max-height:512px;" alt="RPNG About Image">
                 </div>
-                <div id="plate-number" class="plate-number" data-theme="a" style="background-size:contain"></div>
+                <div id="plate-number" class="plate-number" data-theme="a"></div>
                 <br>
                 <div class="ui-grid-solo">
                     <div class="ui-block-a"><button id="generate" type="v" data-theme="b" onclick="generateNames()">Generate</button></div>
