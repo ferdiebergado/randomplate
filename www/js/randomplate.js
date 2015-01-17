@@ -18,7 +18,7 @@ function initDB() {
 function generateNames() {
 
     var sql_fname_count = "SELECT * FROM fnames";
-    var sql_lname_count = "SELECT * FROM lnames";    
+    var sql_lname_count = "SELECT * FROM lnames";
     var sql_fname = " WHERE fnid = (?)";
     var sql_lname = " WHERE lnid = (?)";
     var fid = 0;
@@ -29,7 +29,7 @@ function generateNames() {
     var lcount = 0;
     var dataset;
 
-    var db = sqlitePlugin.openDatabase({name: "names.db"});    
+    var db = sqlitePlugin.openDatabase({name: "names.db"});
 
     db.transaction(function (tx) {
 
@@ -45,8 +45,9 @@ function generateNames() {
 
                 dataset = result.rows;
                 fn = dataset.item(0).fname;
+                document.getElementById("driver-name").innerHTML = fn;
 
-                $("#driver-name").prop("innerHTML", fn);
+                // $("#driver-name").prop("innerHTML", fn);
 
             });
 
@@ -62,7 +63,9 @@ function generateNames() {
 
                 dataset = result.rows;
                 ln = dataset.item(0).lname;
-                $("#driver-name").prop("innerHTML", $("#driver-name").text() + ' ' + ln);
+                var fname = document.getElementById("driver-name").textContent;
+                document.getElementById("driver-name").innerHTML = fname + ' ' + ln;
+                // $("#driver-name").prop("innerHTML", $("#driver-name").text() + ' ' + ln);
 
             });
         });
@@ -72,7 +75,8 @@ function generateNames() {
     });
 
     var pn = generatePlates();
-
+    // document.getElementById("plate-number").textContent = pn;            
+    // document.getElementById("plate-number").className = "plate-number";
     $("#plate-number").prop("innerHTML", "<h1>" + pn + "</h1>");
 
 }
@@ -87,8 +91,10 @@ function generatePlates() {
     var ld = parseInt(platedigits.substr(platedigits.length - 1));
     var platenumber = '';
     var d3 = 0;
+    var sel_area = document.getElementById("select-area").value;
+    var sel_day = document.getElementById("select-day").value;
 
-    switch ($("#select-area").val()) {
+    switch (sel_area) {
 
         case "mnl":
 
@@ -129,7 +135,7 @@ function generatePlates() {
     }
 
     // Get the day of week and assign an appropriate last digit for the plate number
-    switch ($("#select-day").val()) {
+    switch (sel_day) {
 
         case "mon":
             d3 = getDigit(ld, 1, 2);
@@ -140,7 +146,6 @@ function generatePlates() {
             break;
 
         case "wed":
-
             d3 = getDigit(ld, 5, 6);
             break;
 
@@ -155,7 +160,7 @@ function generatePlates() {
     }
 
     // In case of a weekend
-    if ($("#select-day").val() != "wknd") {
+    if (sel_day != "wknd") {
         platedigits = f2.toString() + d3.toString();
     }
 
@@ -172,10 +177,10 @@ function getRandomInt(mind, maxd) {
 }
 
 //Generate the appropriate last digit
-function getDigit(d, x, y) {        
+function getDigit(d, x, y) {
     while ((d == x) || (d == y)) {
         d = getRandomInt(1, 10);
-        if ( d == 10) {
+        if (d == 10) {
             d = 0;
         }
     }
