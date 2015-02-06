@@ -84,90 +84,99 @@ function generateNames() {
 // Generate plate numbers
 function generatePlates() {
 
-    var fl = '';
-    var plateletters = '';
-    var platedigits = (getRandomInt(100, 999)).toString();
-    var f2 = getRandomInt(10, 99);
-    var ld = parseInt(platedigits.substr(platedigits.length - 1));
-    var platenumber = '';
-    var d3 = 0;
-    var sel_area = document.getElementById("select-area").value;
-    var sel_day = document.getElementById("select-day").value;
+    if (document.getElementById("select-vehicle").value == 'tric') {
+        
+        var platedigits = getRandomInt(1000,9999);
+        var plateletters = String.fromCharCode(getRandomInt(65, 90)) + String.fromCharCode(getRandomInt(65, 90));
+        var platenumber = platedigits + ' ' + plateletters;
 
-    switch (sel_area) {
+    } else {
 
-        case "mnl":
+        var fl = '';
+        var plateletters = '';
+        var platedigits = (getRandomInt(100, 999)).toString();
+        var f2 = getRandomInt(10, 99);
+        var ld = parseInt(platedigits.substr(platedigits.length - 1));
+        var platenumber = '';
+        var d3 = 0;
+        var sel_area = document.getElementById("select-area").value;
+        var sel_day = document.getElementById("select-day").value;
 
-            var l = getRandomInt(1, 2);
+        switch (sel_area) {
 
-            if (l == 1) {
-                fl = 'P';
-            } else {
-                fl = 'T';
-            }
+            case "mnl":
 
-            break;
+                var l = getRandomInt(1, 2);
 
-        case "ceb":
+                if (l == 1) {
+                    fl = 'P';
+                } else {
+                    fl = 'T';
+                }
 
-            fl = 'G';
-            break;
+                break;
 
-        case "dvo":
+            case "ceb":
 
-            fl = 'L';
-            break;
+                fl = 'G';
+                break;
 
-        case "cdo":
+            case "dvo":
 
-            fl = 'K';
-            break;
+                fl = 'L';
+                break;
 
-        case "bag":
+            case "cdo":
 
-            fl = 'A';
-            break;
+                fl = 'K';
+                break;
 
-        case "ilo":
+            case "bag":
 
-            fl = "F";
-            break;
+                fl = 'A';
+                break;
+
+            case "ilo":
+
+                fl = "F";
+                break;
+        }
+
+        // Get the day of week and assign an appropriate last digit for the plate number
+        switch (sel_day) {
+
+            case "mon":
+                d3 = getDigit(ld, 1, 2);
+                break;
+
+            case "tue":
+                d3 = getDigit(ld, 3, 4);
+                break;
+
+            case "wed":
+                d3 = getDigit(ld, 5, 6);
+                break;
+
+            case "thu":
+                d3 = getDigit(ld, 7, 8);
+                break;
+
+            case "fri":
+                d3 = getDigit(ld, 9, 0);
+                break;
+
+        }
+
+        // In case of a weekend
+        if (sel_day != "wknd") {
+            platedigits = f2.toString() + d3.toString();
+        }
+
+        // Combine the characters and digits for the plate number
+        plateletters = fl + String.fromCharCode(getRandomInt(65, 90)) + String.fromCharCode(getRandomInt(65, 90));
+        platenumber = plateletters + ' ' + platedigits;
+
     }
-
-    // Get the day of week and assign an appropriate last digit for the plate number
-    switch (sel_day) {
-
-        case "mon":
-            d3 = getDigit(ld, 1, 2);
-            break;
-
-        case "tue":
-            d3 = getDigit(ld, 3, 4);
-            break;
-
-        case "wed":
-            d3 = getDigit(ld, 5, 6);
-            break;
-
-        case "thu":
-            d3 = getDigit(ld, 7, 8);
-            break;
-
-        case "fri":
-            d3 = getDigit(ld, 9, 0);
-            break;
-
-    }
-
-    // In case of a weekend
-    if (sel_day != "wknd") {
-        platedigits = f2.toString() + d3.toString();
-    }
-
-    // Combine the characters and digits for the plate number
-    plateletters = fl + String.fromCharCode(getRandomInt(65, 90)) + String.fromCharCode(getRandomInt(65, 90));
-    platenumber = plateletters + ' ' + platedigits;
-
     return platenumber;
 }
 
