@@ -84,9 +84,13 @@
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/img \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/platenumber.css \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin \
+/home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.plugin.datepicker \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www/SQLitePlugin.js \
+/home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.plugin.datepicker/www \
+/home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.plugin.datepicker/www/android \
+/home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/com.plugin.datepicker/www/android/DatePicker.js \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion/www \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion/www/AppVersionPlugin.js \
 /home/ferdie/Projects/HTML5Application/platforms/android/assets/www/css/index.css \

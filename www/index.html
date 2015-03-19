@@ -72,7 +72,7 @@
                     <option value="taxi">Taxi</option>
                     <option value="tric">Tricycle/Motorcycle</option>                 
                 </select>
-                
+
                 <label id="label-area" for="select-area">Select an area:</label>
                 <select id="select-area" data-theme="a">
                     <option value="mnl">Metro Manila</option>
@@ -81,17 +81,20 @@
                     <option value="cdo">Cagayan de Oro</option>
                     <option value="bag">Baguio</option>
                     <option value="ilo">Iloilo</option>                    
-                </select>                
+                </select>   
 
-                <label id="label-day" for="select-day">Select day of week:</label>
-                <select id="select-day" data-theme="a">
-                    <option value="mon">Monday</option>
-                    <option value="tue">Tuesday</option>
-                    <option value="wed">Wednesday</option>
-                    <option value="thu">Thursday</option>
-                    <option value="fri">Friday</option>
-                    <option value="wknd">Weekend</option>
-                </select>
+                <label id="label-date" for="dateinput">Select date:</label>
+                <input type="text" id="dateinput" onclick="showDatePicker()" data-theme="a" readonly>
+
+                <!--                <label id="label-day" for="select-day">Select day of week:</label>
+                                <select id="select-day" data-theme="a">
+                                    <option value="mon">Monday</option>
+                                    <option value="tue">Tuesday</option>
+                                    <option value="wed">Wednesday</option>
+                                    <option value="thu">Thursday</option>
+                                    <option value="fri">Friday</option>
+                                    <option value="wknd">Weekend</option>
+                                </select>-->
 
                 <h3>Driver's Name:</h3>
                 <div id="driver-name" class="driver-name" data-theme="a">Generating...</div>

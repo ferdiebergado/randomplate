@@ -26,6 +26,10 @@
                         {
                             "xml": "<feature name=\"AppVersion\"><param name=\"android-package\" value=\"uk.co.whiteoctober.cordova.AppVersion\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DatePickerPlugin\"><param name=\"android-package\" value=\"com.plugin.datepicker.DatePickerPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -37,6 +41,12 @@
             "PACKAGE_NAME": "com.fsbergado.randomplate"
         },
         "uk.co.whiteoctober.cordova.appversion": {
+            "PACKAGE_NAME": "ph.com.fsbergado.randomplate"
+        },
+        "com.plugin.datepicker": {
+            "PACKAGE_NAME": "ph.com.fsbergado.randomplate"
+        },
+        "org.apache.cordova.console": {
             "PACKAGE_NAME": "ph.com.fsbergado.randomplate"
         }
     },
