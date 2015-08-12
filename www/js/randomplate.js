@@ -60,15 +60,11 @@ function generateNames() {
 
             //Retrieve the id of the first name that corresponds to the randomly generated number
             tx.executeSql(sql_fname_count + sql_fname, [fid], function (tx, result) {
-
                 dataset = result.rows;
                 fn = dataset.item(0).fname;
                 document.getElementById("driver-name").innerHTML = fn;
-
                 // $("#driver-name").prop("innerHTML", fn);
-
             });
-
         });
 
         tx.executeSql(sql_lname_count, [], function (tx, result) {
@@ -78,13 +74,11 @@ function generateNames() {
             lid = getRandomInt(1, lcount);
 
             tx.executeSql(sql_lname_count + sql_lname, [lid], function (tx, result) {
-
                 dataset = result.rows;
                 ln = dataset.item(0).lname;
                 var fname = document.getElementById("driver-name").textContent;
                 document.getElementById("driver-name").innerHTML = fname + ' ' + ln;
                 // $("#driver-name").prop("innerHTML", $("#driver-name").text() + ' ' + ln);
-
             });
         });
 
@@ -96,7 +90,6 @@ function generateNames() {
     // document.getElementById("plate-number").textContent = pn;            
     // document.getElementById("plate-number").className = "plate-number";
     $("#plate-number").prop("innerHTML", "<h1>" + pn + "</h1>");
-
 }
 
 // Generate plate numbers
@@ -117,7 +110,37 @@ function generatePlates() {
         // var d3 = 0;
         // var sel_day = document.getElementById("select-day").value;
         switch (sel_area) {
-            case "mnl":
+            case "REGION_I": //Region I
+                fl = 'A';
+                break;
+            case "REGION_II": //Region II
+                fl = "B";
+                break;
+            case "REGION_III": //Region III
+                fl = "R";
+                break;    
+            case "REGION_IVA": //Region IV-A
+                fl = "V";
+                break; 
+            case "REGION_IVB": //Region IV-B
+                fl = "V";
+                break;    
+            case "REGION_V": //Region V
+                fl = "E";
+                break;
+            case "REGION_VIII": //Region III
+                fl = "H";
+                break;
+            case "REGION_IX" : //Region IX
+                fl = "J";
+                break;
+            case "ARMM" : //ARMM
+                fl = "J";
+                break;    
+            case "REGION_XII": //Region XII
+                fl = "M";
+                break;
+            case "NCR":
                 var l = getRandomInt(1, 2);
                 if (l == 1) {
                     fl = 'P';
@@ -125,19 +148,22 @@ function generatePlates() {
                     fl = 'T';
                 }
                 break;
-            case "ceb": //Cebu
-                fl = 'G';
+            case "REGION_VII": //Region VII
+                fl = 'Y';
                 break;
-            case "dvo": //Davao
+            case "REGION_XI": //Region XI
                 fl = 'L';
                 break;
-            case "cdo": //Cagayan de Oro
+            case "REGION_X": //Region X
                 fl = 'K';
                 break;
-            case "bag": //Baguio
+            case "CARAGA": //CARAGA
+                fl = 'K';
+                break;
+            case "CAR": //CAR
                 fl = 'A';
                 break;
-            case "ilo": //Iloilo
+            case "REGION_VI": //Region VI
                 fl = "F";
                 break;
         }
@@ -173,47 +199,13 @@ function generatePlates() {
 
 //Generate the appropriate last digit
 function getDigit(d, x, y) {
-//    var d2 = d;
-    // console.log("d: " + d + ", x: " + x + ", y: " + y);
     while ((d === x) || (d === y)) {
         d = getRandomInt(1, 10);
         if (d === 10) {
             d = 0;
         }
-        // console.log("new d: " + d)
     }
     return d;
-//    alert("d: " + d + ", x: " + x + ", y: " + y);
-//    var d2 = d;
-//    if (d2 === x) {
-//        d2 = x - 1;
-//        if (d2 === -1) {
-//            d2 = 9;
-//        }
-//        alert("d for x: " + d2);
-//    }
-//    if (d2 === y) {
-//        d2 = y + 1;
-//        if (d2 === 10) {
-//            d2 = 0;
-//        }
-//        alert("d for y: " + d2);
-//    }
-//    return d2;
-//    var d2;
-//    alert("d: " + d + ", x: " + x + ", y: " + y);
-//    d3 = d;
-//    //Test if the last digit is not the same with the digits (x and y) that are banned on a specific day
-//    if ((d3 === x) || (d3 === y)) {
-//        // do {
-//            d2 = getRandomInt(1, 10);
-//            if (d2 === 10) {
-//                d2 = 0;
-//            }
-//        // } while ((d2 === x) || (d2 === y))
-//        alert("New d: " + d2);
-//        d3 = d2;
-//    }
 }
 
 //Generate a random integer
